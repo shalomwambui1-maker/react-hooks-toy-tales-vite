@@ -13,7 +13,7 @@ function App() {
   useEffect(() => {
     fetch(API)
       .then((r) => r.json())
-      .then(setToys)
+      .then((data) => setToys(data))
       .catch((err) => console.error("Fetch failed:", err));
   }, []);
 
@@ -38,7 +38,7 @@ function App() {
       .catch((err) => console.error("Delete failed:", err));
   }
 
-  // PATCH: increase likes, replace toy in place to keep order
+  // PATCH: increase likes, replace the toy in place so order is kept
   function handleLikeToy(toy) {
     fetch(`${API}/${toy.id}`, {
       method: "PATCH",
